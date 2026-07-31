@@ -1,0 +1,359 @@
+{
+  "dayTypes": {
+    "2026-07-29": "sq",
+    "2026-07-31": "bp"
+  },
+  "logs": {
+    "2026-07-29:sq-a1": {
+      "rows": [
+        {
+          "kg": "40",
+          "reps": "5",
+          "done": true
+        },
+        {
+          "kg": "40",
+          "reps": "5",
+          "done": true
+        },
+        {
+          "kg": "40",
+          "reps": "5",
+          "done": true
+        },
+        {
+          "kg": "40",
+          "reps": "5",
+          "done": true
+        }
+      ]
+    },
+    "2026-07-29:sq-a2": {
+      "rows": [
+        {
+          "kg": "20",
+          "reps": "5",
+          "done": true
+        },
+        {
+          "kg": "20",
+          "reps": "5",
+          "done": true
+        },
+        {
+          "kg": "20",
+          "reps": "5",
+          "done": true
+        },
+        {
+          "kg": "20",
+          "reps": "5",
+          "done": true
+        }
+      ]
+    },
+    "2026-07-29:sq-b1": {
+      "rows": [
+        {
+          "kg": "0",
+          "reps": "5",
+          "done": true
+        },
+        {
+          "kg": "0",
+          "reps": "5",
+          "done": true
+        },
+        {
+          "kg": "0",
+          "reps": "5",
+          "done": true
+        }
+      ]
+    },
+    "2026-07-29:sq-b2": {
+      "rows": [
+        {
+          "kg": "0",
+          "reps": "5",
+          "done": true
+        },
+        {
+          "kg": "0",
+          "reps": "5",
+          "done": true
+        },
+        {
+          "kg": "0",
+          "reps": "5",
+          "done": true
+        }
+      ]
+    },
+    "2026-07-29:bp-a1": {
+      "rows": [
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        }
+      ]
+    },
+    "2026-07-29:bp-a2": {
+      "rows": [
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        }
+      ]
+    },
+    "2026-07-29:bp-b1": {
+      "rows": [
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        }
+      ]
+    },
+    "2026-07-29:bp-b2": {
+      "rows": [
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        }
+      ]
+    },
+    "2026-07-29:dl-a1": {
+      "rows": [
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        }
+      ]
+    },
+    "2026-07-29:dl-a2": {
+      "rows": [
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        }
+      ]
+    },
+    "2026-07-29:dl-b1": {
+      "rows": [
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        }
+      ]
+    },
+    "2026-07-29:dl-b2": {
+      "rows": [
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        }
+      ]
+    },
+    "2026-07-31:bp-a1": {
+      "rows": [
+        {
+          "kg": "10",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        }
+      ]
+    },
+    "2026-07-31:bp-a2": {
+      "rows": [
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        }
+      ]
+    },
+    "2026-07-31:bp-b1": {
+      "rows": [
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        }
+      ]
+    },
+    "2026-07-31:bp-b2": {
+      "rows": [
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        }
+      ]
+    }
+  },
+  "lastKg": {
+    "sq-a1": "40",
+    "sq-a2": "20",
+    "sq-b1": "0",
+    "sq-b2": "0",
+    "bp-a1": "10"
+  }
+}
