@@ -282,7 +282,7 @@
         {
           "kg": "30",
           "reps": "5",
-          "done": false
+          "done": true
         }
       ]
     },
