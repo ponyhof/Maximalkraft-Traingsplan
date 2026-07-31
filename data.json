@@ -333,8 +333,8 @@
       "rows": [
         {
           "kg": "0",
-          "reps": "",
-          "done": false
+          "reps": "3",
+          "done": true
         },
         {
           "kg": "0",
