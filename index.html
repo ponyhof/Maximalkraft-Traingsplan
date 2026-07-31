@@ -24,47 +24,48 @@
     --plate-yellow: #D9A62E;
     --plate-green: #3F8F5D;
     --good: #4CAF7D;
+    --bad: #C8383A;
   }
   *{box-sizing:border-box; -webkit-tap-highlight-color: transparent;}
   html,body{margin:0;background:var(--bg);color:var(--chalk);font-family:'Inter', sans-serif;}
   body{padding-bottom:env(safe-area-inset-bottom, 40px);}
   .wrap{max-width:520px;margin:0 auto;padding:calc(env(safe-area-inset-top,0px) + 18px) 16px 40px;}
 
-  header{margin-bottom:18px;}
+  header{margin-bottom:18px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px;}
   .brand{display:flex;align-items:center;gap:10px;}
   h1{font-family:'Oswald', sans-serif;font-weight:700;font-size:22px;letter-spacing:0.4px;text-transform:uppercase;margin:0;}
-  .subtitle{color:var(--chalk-dim);font-size:12.5px;margin-top:3px;}
+  .subtitle{color:var(--chalk-dim);font-size:11.5px;margin-top:3px;}
+  .icon-btn{background:var(--panel-2);border:1px solid var(--line);color:var(--chalk-dim);width:34px;height:34px;border-radius:9px;font-size:15px;cursor:pointer;flex-shrink:0;}
 
-  /* Month nav */
+  .sync-status{font-family:'Space Mono',monospace;font-size:10.5px;color:var(--chalk-dim);margin:-8px 0 14px;display:flex;align-items:center;gap:6px;}
+  .sync-dot{width:7px;height:7px;border-radius:50%;background:var(--chalk-dim);}
+  .sync-dot.ok{background:var(--good);}
+  .sync-dot.err{background:var(--bad);}
+  .sync-status button{background:none;border:none;color:var(--chalk-dim);text-decoration:underline;cursor:pointer;font-family:'Inter',sans-serif;font-size:10.5px;padding:0;margin-left:auto;}
+
+  .settings-panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:18px;}
+  .settings-panel h2{font-family:'Oswald',sans-serif;font-size:14px;text-transform:uppercase;letter-spacing:0.4px;margin:0 0 4px;}
+  .settings-panel p{font-size:12px;color:var(--chalk-dim);line-height:1.5;margin:0 0 12px;}
+  .settings-panel label{display:block;font-size:11.5px;color:var(--chalk-dim);margin:10px 0 4px;}
+  .settings-panel input{width:100%;background:var(--panel-2);border:1px solid var(--line);border-radius:7px;color:var(--chalk);font-family:'Space Mono',monospace;font-size:13px;padding:9px 10px;}
+  .settings-panel .row-btns{display:flex;gap:8px;margin-top:14px;}
+  .settings-panel button.primary{background:var(--plate-blue);border:none;color:#fff;padding:9px 16px;border-radius:8px;font-size:13px;cursor:pointer;font-family:'Inter',sans-serif;}
+  .settings-panel button.secondary{background:none;border:1px solid var(--line);color:var(--chalk-dim);padding:9px 16px;border-radius:8px;font-size:13px;cursor:pointer;font-family:'Inter',sans-serif;}
+  .settings-panel a{color:var(--plate-blue);}
+
   .month-nav{display:flex;align-items:center;justify-content:space-between;margin:18px 0 12px;}
-  .month-nav button{
-    background:var(--panel-2);border:1px solid var(--line);color:var(--chalk);
-    width:34px;height:34px;border-radius:8px;font-size:16px;cursor:pointer;
-  }
+  .month-nav button{background:var(--panel-2);border:1px solid var(--line);color:var(--chalk);width:34px;height:34px;border-radius:8px;font-size:16px;cursor:pointer;}
   .month-title{font-family:'Oswald',sans-serif;font-size:17px;letter-spacing:0.5px;text-transform:uppercase;}
 
-  /* Calendar grid */
   .weekdays{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:6px;}
   .weekdays span{text-align:center;font-size:10.5px;color:var(--chalk-dim);font-family:'Space Mono',monospace;}
   .grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;}
-  .cell{
-    aspect-ratio:1/1;
-    border-radius:9px;
-    background:var(--panel);
-    border:1px solid var(--line);
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
-    cursor:pointer;position:relative;
-    font-family:'Space Mono',monospace;
-  }
+  .cell{aspect-ratio:1/1;border-radius:9px;background:var(--panel);border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;position:relative;font-family:'Space Mono',monospace;}
   .cell.pad{visibility:hidden;cursor:default;}
   .cell.today{border-color:var(--chalk-dim);}
   .cell.selected{border-color:var(--chalk);box-shadow:0 0 0 1px var(--chalk) inset;}
   .cell .num{font-size:13px;}
-  .cell .badge{
-    margin-top:3px;width:16px;height:16px;border-radius:5px;
-    font-size:9px;display:flex;align-items:center;justify-content:center;
-    font-family:'Oswald',sans-serif;font-weight:600;color:#12130f;
-  }
+  .cell .badge{margin-top:3px;width:16px;height:16px;border-radius:5px;font-size:9px;display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;font-weight:600;color:#12130f;}
   .badge-sq{background:var(--plate-red);color:#fff;}
   .badge-bp{background:var(--plate-blue);color:#fff;}
   .badge-dl{background:var(--plate-yellow);color:#1B1D1F;}
@@ -73,18 +74,10 @@
   .legend span{display:inline-flex;align-items:center;gap:5px;}
   .legend i{width:10px;height:10px;border-radius:3px;display:inline-block;}
 
-  /* Detail panel */
-  .panel{
-    margin-top:22px;border-top:1px solid var(--line);padding-top:18px;
-  }
+  .panel{margin-top:22px;border-top:1px solid var(--line);padding-top:18px;}
   .panel-date{font-family:'Oswald',sans-serif;font-size:18px;text-transform:uppercase;letter-spacing:0.4px;margin-bottom:12px;}
   .type-picker{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap;}
-  .type-btn{
-    flex:1;min-width:90px;
-    background:var(--panel-2);border:1px solid var(--line);color:var(--chalk-dim);
-    padding:10px 6px;border-radius:9px;font-size:12.5px;font-family:'Inter',sans-serif;cursor:pointer;
-    text-align:center;
-  }
+  .type-btn{flex:1;min-width:90px;background:var(--panel-2);border:1px solid var(--line);color:var(--chalk-dim);padding:10px 6px;border-radius:9px;font-size:12.5px;font-family:'Inter',sans-serif;cursor:pointer;text-align:center;}
   .type-btn.active{color:var(--chalk);border-color:var(--chalk);}
   .type-btn .dotline{width:100%;height:3px;border-radius:2px;margin-top:6px;}
   .type-btn.clear{flex:0 0 auto;min-width:auto;padding:10px 12px;}
@@ -124,14 +117,6 @@
   .rest-time.zero{color:var(--good);}
   .rest-btn{background:none;border:1px solid var(--line);color:var(--chalk);border-radius:6px;padding:5px 10px;cursor:pointer;font-family:'Inter',sans-serif;font-size:12px;}
   .block-note{font-size:12px;color:var(--chalk-dim);text-align:center;margin:10px 0 4px;font-style:italic;}
-
-  .empty-hint{color:var(--chalk-dim);font-size:13px;text-align:center;padding:20px 10px;}
-
-  .install-hint{
-    margin-top:26px;background:var(--panel);border:1px solid var(--line);border-radius:10px;
-    padding:14px 16px;font-size:12.5px;color:var(--chalk-dim);line-height:1.6;
-  }
-  .install-hint b{color:var(--chalk);}
 
   .loading{padding:60px 20px;text-align:center;color:var(--chalk-dim);font-family:'Space Mono',monospace;font-size:13px;}
 </style>
@@ -183,11 +168,19 @@ const today = new Date();
 const todayKey = toKey(today.getFullYear(), today.getMonth(), today.getDate());
 
 let viewYear = today.getFullYear();
-let viewMonth = today.getMonth(); // 0-indexed
-let selectedDate = null; // 'YYYY-MM-DD'
-let dayTypes = {}; // date -> session key
-let exerciseCache = {}; // `${date}:${exId}` -> {rows:[...]}
-const timers = {}; // blockId -> {remaining, running, total, intervalId}
+let viewMonth = today.getMonth();
+let selectedDate = null;
+let showSettings = false;
+
+// Gesamter Datenblock: wird lokal gecacht UND (falls eingerichtet) mit GitHub synchronisiert
+let store = { dayTypes:{}, logs:{}, lastKg:{} };
+let ghConfig = null; // {owner, repo, token}
+let ghSha = null;    // aktueller Datei-Hash auf GitHub, nötig zum Ueberschreiben
+let syncState = 'off'; // off | ok | syncing | error
+let lastSyncTime = null;
+let saveTimeout = null;
+
+const timers = {};
 
 function pauseSecondsFromString(str){
   const m = str.match(/([\d.]+)/);
@@ -200,92 +193,106 @@ function fmtTime(sec){
   return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
 }
 
-// Speicherung direkt im Browser (localStorage) – funktioniert eigenständig,
-// auch als zum Home-Bildschirm hinzugefügte App, ganz ohne Internetverbindung.
-function storageGet(key){
-  try{ return localStorage.getItem(key); }catch(e){ return null; }
-}
-function storageSet(key, value){
-  try{ localStorage.setItem(key, value); }catch(e){ console.error('Speichern fehlgeschlagen', e); }
-}
-function storageRemove(key){
-  try{ localStorage.removeItem(key); }catch(e){}
-}
-function storageKeysWithPrefix(prefix){
-  const keys = [];
+function b64EncodeUnicode(str){ return btoa(unescape(encodeURIComponent(str))); }
+function b64DecodeUnicode(str){ return decodeURIComponent(escape(atob(str))); }
+
+function loadLocalCache(){
   try{
-    for(let i=0;i<localStorage.length;i++){
-      const k = localStorage.key(i);
-      if(k && k.indexOf(prefix)===0) keys.push(k);
-    }
+    const raw = localStorage.getItem('kraftplan-data');
+    if(raw) store = JSON.parse(raw);
   }catch(e){}
-  return keys;
+  try{
+    const cfg = localStorage.getItem('gh-config');
+    if(cfg) ghConfig = JSON.parse(cfg);
+  }catch(e){}
+}
+function saveLocalCache(){
+  try{ localStorage.setItem('kraftplan-data', JSON.stringify(store)); }catch(e){}
 }
 
-async function loadMonthDayTypes(y,m){
-  const prefix = `daytype:${y}-${pad(m+1)}`;
-  const keys = storageKeysWithPrefix(prefix);
-  for(const k of keys){
-    const date = k.slice('daytype:'.length);
-    const val = storageGet(k);
-    if(val) dayTypes[date] = val;
+async function ghLoad(){
+  if(!ghConfig || !ghConfig.owner || !ghConfig.repo || !ghConfig.token) return false;
+  syncState = 'syncing'; render();
+  try{
+    const url = `https://api.github.com/repos/${ghConfig.owner}/${ghConfig.repo}/contents/data.json`;
+    const res = await fetch(url, { headers: { 'Authorization': 'token '+ghConfig.token, 'Accept':'application/vnd.github+json' } });
+    if(res.status === 404){
+      ghSha = null;
+      syncState = 'ok'; lastSyncTime = new Date();
+      return true; // noch keine Datei auf GitHub - lokaler Stand gilt als Basis
+    }
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const json = await res.json();
+    ghSha = json.sha;
+    const content = b64DecodeUnicode(json.content.replace(/\n/g,''));
+    store = JSON.parse(content);
+    saveLocalCache();
+    syncState = 'ok'; lastSyncTime = new Date();
+    return true;
+  }catch(e){
+    syncState = 'error';
+    return false;
   }
 }
 
-async function setDayType(date, sessionKey){
-  if(sessionKey){
-    dayTypes[date] = sessionKey;
-    storageSet('daytype:'+date, sessionKey);
-  } else {
-    delete dayTypes[date];
-    storageRemove('daytype:'+date);
-  }
-}
-
-async function loadExercise(date, ex){
-  const cacheKey = date+':'+ex.id;
-  if(exerciseCache[cacheKey]) return exerciseCache[cacheKey];
-  const lastKg = storageGet('lastkg:'+ex.id) || '';
-  let data = null;
-  const raw = storageGet('log:'+cacheKey);
-  if(raw){
-    try{ data = JSON.parse(raw); }catch(e){ data = null; }
-  }
-  if(!data || !Array.isArray(data.rows) || data.rows.length !== ex.sets){
-    data = { rows: Array.from({length:ex.sets}, ()=>({kg:lastKg, reps:'', done:false})) };
-  }
-  exerciseCache[cacheKey] = data;
-  return data;
-}
-
-async function saveExercise(date, exId){
-  const cacheKey = date+':'+exId;
-  const data = exerciseCache[cacheKey];
-  storageSet('log:'+cacheKey, JSON.stringify(data));
-}
-
-async function selectDate(date){
-  selectedDate = date;
-  const sessionKey = dayTypes[date];
-  if(sessionKey){
-    const session = SESSIONS[sessionKey];
-    const allEx = [];
-    session.blocks.forEach(b=>b.pairs.forEach(p=>allEx.push(p)));
-    for(const ex of allEx){ await loadExercise(date, ex); }
+async function ghSave(){
+  if(!ghConfig || !ghConfig.owner || !ghConfig.repo || !ghConfig.token) return;
+  syncState = 'syncing'; render();
+  try{
+    const url = `https://api.github.com/repos/${ghConfig.owner}/${ghConfig.repo}/contents/data.json`;
+    const body = {
+      message: 'Kraftplan-Daten aktualisiert',
+      content: b64EncodeUnicode(JSON.stringify(store, null, 2))
+    };
+    if(ghSha) body.sha = ghSha;
+    const res = await fetch(url, {
+      method:'PUT',
+      headers:{ 'Authorization':'token '+ghConfig.token, 'Accept':'application/vnd.github+json', 'Content-Type':'application/json' },
+      body: JSON.stringify(body)
+    });
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const json = await res.json();
+    ghSha = json.content.sha;
+    syncState = 'ok'; lastSyncTime = new Date();
+  }catch(e){
+    syncState = 'error';
   }
   render();
 }
 
+function scheduleSave(){
+  saveLocalCache();
+  if(saveTimeout) clearTimeout(saveTimeout);
+  saveTimeout = setTimeout(()=>{ ghSave(); }, 900);
+}
+
+async function setDayType(date, sessionKey){
+  if(sessionKey) store.dayTypes[date] = sessionKey;
+  else delete store.dayTypes[date];
+  scheduleSave();
+}
+
+function getExercise(date, ex){
+  const cacheKey = date+':'+ex.id;
+  let data = store.logs[cacheKey];
+  if(!data || !Array.isArray(data.rows) || data.rows.length !== ex.sets){
+    const lastKg = store.lastKg[ex.id] || '';
+    data = { rows: Array.from({length:ex.sets}, ()=>({kg:lastKg, reps:'', done:false})) };
+    store.logs[cacheKey] = data;
+  }
+  return data;
+}
+
 function renderCalendar(){
   const first = new Date(viewYear, viewMonth, 1);
-  const offset = (first.getDay()+6)%7; // Montag=0
+  const offset = (first.getDay()+6)%7;
   const daysInMonth = new Date(viewYear, viewMonth+1, 0).getDate();
 
   let cells = '';
   for(let i=0;i<offset;i++) cells += `<div class="cell pad"></div>`;
   for(let d=1; d<=daysInMonth; d++){
     const key = toKey(viewYear, viewMonth, d);
-    const type = dayTypes[key];
+    const type = store.dayTypes[key];
     const isToday = key === todayKey;
     const isSel = key === selectedDate;
     cells += `
@@ -311,11 +318,11 @@ function renderCalendar(){
 }
 
 function renderPanel(){
-  if(!selectedDate) return `<div class="panel"><div class="empty-hint">Tippe auf ein Datum im Kalender, um ein Training zuzuweisen oder einzutragen.</div></div>`;
+  if(!selectedDate) return '';
 
   const [y,m,d] = selectedDate.split('-').map(Number);
   const wd = WEEKDAYS_LONG[(new Date(y, m-1, d).getDay()+6)%7];
-  const sessionKey = dayTypes[selectedDate];
+  const sessionKey = store.dayTypes[selectedDate];
 
   let html = `<div class="panel">
     <div class="panel-date">${wd}, ${d}. ${MONTHS[m-1]} ${y}</div>
@@ -335,8 +342,7 @@ function renderPanel(){
     session.blocks.forEach(block=>{
       html += `<div class="block"><div class="block-label"><span>BLOCK ${block.id}</span><span class="line"></span></div>`;
       block.pairs.forEach((ex, idx)=>{
-        const cacheKey = selectedDate+':'+ex.id;
-        const data = exerciseCache[cacheKey] || {rows:[]};
+        const data = getExercise(selectedDate, ex);
         html += `<div class="pair pair-${block.pairColor}" style="margin-bottom:${idx===0?'10px':'0'};">
           <div class="exercise">
             <div class="ex-head">
@@ -380,8 +386,38 @@ function renderPanel(){
   return html;
 }
 
+function renderSettings(){
+  if(!showSettings) return '';
+  const cfg = ghConfig || {owner:'', repo:'', token:''};
+  return `
+    <div class="settings-panel">
+      <h2>Geräteübergreifende Synchronisation</h2>
+      <p>Daten werden in einer Datei <code>data.json</code> in deinem GitHub-Repository gespeichert. Auf jedem Gerät hier dieselben Angaben eintragen, dann sind die Einträge überall gleich.</p>
+      <label>GitHub-Benutzername</label>
+      <input id="cfg-owner" type="text" value="${cfg.owner}" placeholder="z. B. maxmuster" autocapitalize="off" autocorrect="off">
+      <label>Repository-Name</label>
+      <input id="cfg-repo" type="text" value="${cfg.repo}" placeholder="z. B. kraftplan" autocapitalize="off" autocorrect="off">
+      <label>Personal Access Token</label>
+      <input id="cfg-token" type="password" value="${cfg.token}" placeholder="ghp_..." autocapitalize="off" autocorrect="off">
+      <p style="margin-top:8px;">Token erstellen unter github.com → Settings → Developer settings → Personal access tokens → Fine-grained tokens, mit Schreibrecht ("Contents: Read and write") für dieses Repository.</p>
+      <div class="row-btns">
+        <button class="primary" id="cfg-save">Speichern & synchronisieren</button>
+        <button class="secondary" id="cfg-close">Schliessen</button>
+      </div>
+    </div>
+  `;
+}
+
 function render(){
   const app = document.getElementById('app');
+  let statusLabel = 'Nur auf diesem Gerät gespeichert';
+  let dotClass = '';
+  if(ghConfig && ghConfig.token){
+    if(syncState==='syncing'){ statusLabel = 'Synchronisiere …'; dotClass=''; }
+    else if(syncState==='ok'){ statusLabel = 'Synchronisiert' + (lastSyncTime ? ' · '+lastSyncTime.toLocaleTimeString('de-CH',{hour:'2-digit',minute:'2-digit'}) : ''); dotClass='ok'; }
+    else if(syncState==='error'){ statusLabel = 'Synchronisation fehlgeschlagen'; dotClass='err'; }
+  }
+
   app.innerHTML = `
     <header>
       <div class="brand">
@@ -392,65 +428,91 @@ function render(){
           <rect x="21" y="10" width="3" height="10" rx="1" fill="#D9A62E"/>
           <rect x="25" y="13" width="4" height="4" rx="1" fill="#2B6CB0"/>
         </svg>
-        <h1>Kraftplan</h1>
+        <div>
+          <h1>Kraftplan</h1>
+          <div class="subtitle">Antagonisten-Supersätze</div>
+        </div>
       </div>
-      <div class="subtitle">Antagonisten-Supersätze · frei nach Datum planbar</div>
+      <button class="icon-btn" id="settings-toggle">⚙</button>
     </header>
+    <div class="sync-status">
+      <span class="sync-dot ${dotClass}"></span>
+      <span>${statusLabel}</span>
+      ${ghConfig && ghConfig.token ? `<button id="manual-sync">Jetzt aktualisieren</button>` : ''}
+    </div>
+    ${renderSettings()}
     ${renderCalendar()}
     ${renderPanel()}
-    <div class="install-hint">
-      <b>Datei öffnen, falls sie nicht direkt startet:</b> In der Dateien-App die Datei antippen (kurz). Erscheint nur Programmcode oder eine Fehlermeldung statt der App: oben rechts das Teilen-Symbol antippen → nach unten scrollen → „In Safari öffnen" wählen.<br><br>
-      <b>Als App auf dem Home-Bildschirm:</b> Einmal in Safari geöffnet → Teilen-Symbol antippen → „Zum Home-Bildschirm". Danach startet sie ohne Browser-Leiste wie eine eigene App. Alle Einträge bleiben auf diesem Gerät in diesem Browser gespeichert.
-    </div>
   `;
   attachHandlers();
 }
 
 function attachHandlers(){
+  const st = document.getElementById('settings-toggle');
+  if(st) st.addEventListener('click', ()=>{ showSettings = !showSettings; render(); });
+
+  const closeBtn = document.getElementById('cfg-close');
+  if(closeBtn) closeBtn.addEventListener('click', ()=>{ showSettings=false; render(); });
+
+  const saveBtn = document.getElementById('cfg-save');
+  if(saveBtn) saveBtn.addEventListener('click', async ()=>{
+    const owner = document.getElementById('cfg-owner').value.trim();
+    const repo = document.getElementById('cfg-repo').value.trim();
+    const token = document.getElementById('cfg-token').value.trim();
+    ghConfig = { owner, repo, token };
+    try{ localStorage.setItem('gh-config', JSON.stringify(ghConfig)); }catch(e){}
+    showSettings = false;
+    const ok = await ghLoad();
+    if(!ok && syncState==='error'){
+      // Falls noch keine Datei existiert, direkt den aktuellen lokalen Stand hochladen
+      await ghSave();
+    } else if(ghSha===null){
+      await ghSave();
+    }
+    render();
+  });
+
+  const manualSync = document.getElementById('manual-sync');
+  if(manualSync) manualSync.addEventListener('click', async ()=>{ await ghLoad(); render(); });
+
   document.querySelectorAll('[data-nav]').forEach(btn=>{
-    btn.addEventListener('click', async ()=>{
+    btn.addEventListener('click', ()=>{
       const dir = parseInt(btn.dataset.nav);
       viewMonth += dir;
       if(viewMonth<0){ viewMonth=11; viewYear--; }
       if(viewMonth>11){ viewMonth=0; viewYear++; }
-      await loadMonthDayTypes(viewYear, viewMonth);
       render();
     });
   });
 
   document.querySelectorAll('.cell[data-date]').forEach(cell=>{
-    cell.addEventListener('click', async ()=>{
-      await selectDate(cell.dataset.date);
-    });
+    cell.addEventListener('click', ()=>{ selectedDate = cell.dataset.date; render(); });
   });
 
   document.querySelectorAll('[data-set-type]').forEach(btn=>{
     btn.addEventListener('click', async ()=>{
       const val = btn.dataset.setType;
       await setDayType(selectedDate, val || null);
-      if(val) await selectDate(selectedDate);
-      else render();
+      render();
     });
   });
 
   document.querySelectorAll('.set-row input').forEach(inp=>{
-    inp.addEventListener('change', async (e)=>{
+    inp.addEventListener('change', (e)=>{
       const {ex, i, field} = e.target.dataset;
       const cacheKey = selectedDate+':'+ex;
-      exerciseCache[cacheKey].rows[i][field] = e.target.value;
-      if(field==='kg'){
-        storageSet('lastkg:'+ex, e.target.value);
-      }
-      await saveExercise(selectedDate, ex);
+      store.logs[cacheKey].rows[i][field] = e.target.value;
+      if(field==='kg') store.lastKg[ex] = e.target.value;
+      scheduleSave();
     });
   });
 
   document.querySelectorAll('.done-btn').forEach(btn=>{
-    btn.addEventListener('click', async ()=>{
+    btn.addEventListener('click', ()=>{
       const {ex, i} = btn.dataset;
       const cacheKey = selectedDate+':'+ex;
-      exerciseCache[cacheKey].rows[i].done = !exerciseCache[cacheKey].rows[i].done;
-      await saveExercise(selectedDate, ex);
+      store.logs[cacheKey].rows[i].done = !store.logs[cacheKey].rows[i].done;
+      scheduleSave();
       render();
     });
   });
@@ -487,8 +549,12 @@ function attachHandlers(){
 }
 
 async function init(){
-  await loadMonthDayTypes(viewYear, viewMonth);
+  loadLocalCache();
   render();
+  if(ghConfig && ghConfig.token){
+    await ghLoad();
+    render();
+  }
 }
 init();
 </script>
