@@ -1,7 +1,8 @@
 {
   "dayTypes": {
     "2026-07-29": "sq",
-    "2026-07-31": "bp"
+    "2026-07-31": "bp",
+    "2026-08-01": "dl"
   },
   "logs": {
     "2026-07-29:sq-a1": {
@@ -859,6 +860,92 @@
         },
         {
           "kg": "0",
+          "reps": "",
+          "done": false
+        }
+      ]
+    },
+    "2026-08-01:dl-a1": {
+      "rows": [
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        }
+      ]
+    },
+    "2026-08-01:dl-a2": {
+      "rows": [
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        }
+      ]
+    },
+    "2026-08-01:dl-b1": {
+      "rows": [
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        }
+      ]
+    },
+    "2026-08-01:dl-b2": {
+      "rows": [
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "",
           "reps": "",
           "done": false
         }
