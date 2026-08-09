@@ -10,13 +10,13 @@
       "rows": [
         {
           "kg": "40",
-          "reps": "5",
+          "reps": "4",
           "done": true
         },
         {
           "kg": "40",
           "reps": "5",
-          "done": true
+          "done": false
         },
         {
           "kg": "40",
