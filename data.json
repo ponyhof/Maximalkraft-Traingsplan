@@ -20,7 +20,7 @@
         },
         {
           "kg": "40",
-          "reps": "4",
+          "reps": "5",
           "done": true
         },
         {
@@ -45,7 +45,7 @@
         {
           "kg": "20",
           "reps": "5",
-          "done": false
+          "done": true
         },
         {
           "kg": "20",
