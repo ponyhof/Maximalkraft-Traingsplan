@@ -1445,8 +1445,8 @@
         },
         {
           "kg": "25",
-          "reps": "",
-          "done": false
+          "reps": "4",
+          "done": true
         }
       ]
     },
