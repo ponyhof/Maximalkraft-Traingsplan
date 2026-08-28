@@ -1618,8 +1618,8 @@
         },
         {
           "kg": "17",
-          "reps": "5",
-          "done": false
+          "reps": "10",
+          "done": true
         }
       ]
     },
