@@ -1633,11 +1633,11 @@
         {
           "kg": "0",
           "reps": "5",
-          "done": false
+          "done": true
         },
         {
           "kg": "0",
-          "reps": "",
+          "reps": "5",
           "done": false
         }
       ]
