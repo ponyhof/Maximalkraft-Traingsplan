@@ -1786,8 +1786,8 @@
         },
         {
           "kg": "5",
-          "reps": "",
-          "done": false
+          "reps": "5",
+          "done": true
         },
         {
           "kg": "5",
