@@ -1792,7 +1792,7 @@
         {
           "kg": "5",
           "reps": "5",
-          "done": false
+          "done": true
         }
       ]
     },
