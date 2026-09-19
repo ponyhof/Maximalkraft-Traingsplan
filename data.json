@@ -1955,8 +1955,8 @@
       "rows": [
         {
           "kg": "17",
-          "reps": "",
-          "done": false
+          "reps": "8",
+          "done": true
         },
         {
           "kg": "17",
