@@ -2004,8 +2004,8 @@
         },
         {
           "kg": "50",
-          "reps": "",
-          "done": false
+          "reps": "5",
+          "done": true
         },
         {
           "kg": "50",
@@ -2028,12 +2028,12 @@
         },
         {
           "kg": "50",
-          "reps": "",
-          "done": false
+          "reps": "5",
+          "done": true
         },
         {
           "kg": "50",
-          "reps": "",
+          "reps": "5",
           "done": false
         }
       ]
