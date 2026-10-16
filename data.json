@@ -2034,7 +2034,7 @@
         {
           "kg": "50",
           "reps": "5",
-          "done": false
+          "done": true
         }
       ]
     },
