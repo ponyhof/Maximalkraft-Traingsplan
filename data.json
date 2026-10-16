@@ -2053,7 +2053,7 @@
         {
           "kg": "5",
           "reps": "5",
-          "done": false
+          "done": true
         }
       ]
     },
@@ -2072,7 +2072,7 @@
         {
           "kg": "5",
           "reps": "",
-          "done": false
+          "done": true
         }
       ]
     }
