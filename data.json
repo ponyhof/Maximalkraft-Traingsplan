@@ -2096,8 +2096,8 @@
         },
         {
           "kg": "70",
-          "reps": "2",
-          "done": false
+          "reps": "3",
+          "done": true
         }
       ]
     },
