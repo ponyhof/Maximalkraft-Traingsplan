@@ -9,7 +9,7 @@
     "2026-09-08": "sq",
     "2026-09-11": "bp",
     "2026-09-19": "dl",
-    "2026-10-16": "sq",
+    "2026-10-16": "bp",
     "2026-10-20": "bp"
   },
   "logs": {
@@ -2160,6 +2160,92 @@
           "kg": "0",
           "reps": "3",
           "done": true
+        }
+      ]
+    },
+    "2026-10-16:bp-a1": {
+      "rows": [
+        {
+          "kg": "70",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "70",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "70",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "70",
+          "reps": "",
+          "done": false
+        }
+      ]
+    },
+    "2026-10-16:bp-a2": {
+      "rows": [
+        {
+          "kg": "2.22",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "2.22",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "2.22",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "2.22",
+          "reps": "",
+          "done": false
+        }
+      ]
+    },
+    "2026-10-16:bp-b1": {
+      "rows": [
+        {
+          "kg": "20",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "20",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "20",
+          "reps": "",
+          "done": false
+        }
+      ]
+    },
+    "2026-10-16:bp-b2": {
+      "rows": [
+        {
+          "kg": "0",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "0",
+          "reps": "",
+          "done": false
+        },
+        {
+          "kg": "0",
+          "reps": "",
+          "done": false
         }
       ]
     }
