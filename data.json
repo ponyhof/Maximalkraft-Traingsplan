@@ -2388,13 +2388,13 @@
       "rows": [
         {
           "kg": "12",
-          "reps": "10",
+          "reps": "11",
           "done": true
         },
         {
           "kg": "12",
           "reps": "10",
-          "done": false
+          "done": true
         },
         {
           "kg": "14",
