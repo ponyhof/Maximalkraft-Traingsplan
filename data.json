@@ -2340,8 +2340,8 @@
       "rows": [
         {
           "kg": "45",
-          "reps": "",
-          "done": false
+          "reps": "5",
+          "done": true
         },
         {
           "kg": "50",
