@@ -2398,8 +2398,8 @@
         },
         {
           "kg": "10",
-          "reps": "1",
-          "done": false
+          "reps": "10",
+          "done": true
         }
       ]
     },
