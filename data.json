@@ -2388,8 +2388,8 @@
       "rows": [
         {
           "kg": "12",
-          "reps": "",
-          "done": false
+          "reps": "10",
+          "done": true
         },
         {
           "kg": "14",
