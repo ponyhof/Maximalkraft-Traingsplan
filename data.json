@@ -2428,11 +2428,11 @@
         {
           "kg": "60",
           "reps": "4",
-          "done": false
+          "done": true
         },
         {
           "kg": "60",
-          "reps": "",
+          "reps": "3",
           "done": false
         },
         {
