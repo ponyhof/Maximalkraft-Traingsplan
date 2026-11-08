@@ -2598,7 +2598,7 @@
         {
           "kg": "0",
           "reps": "3",
-          "done": false
+          "done": true
         }
       ],
       "mode": "barbell",
