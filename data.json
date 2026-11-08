@@ -12,7 +12,8 @@
     "2026-10-16": "sq",
     "2026-10-20": "bp",
     "2026-10-27": "dl",
-    "2026-11-03": "sq"
+    "2026-11-03": "sq",
+    "2026-11-08": "bp"
   },
   "logs": {
     "2026-07-29:sq-a1": {
@@ -2508,6 +2509,100 @@
           "done": true
         }
       ]
+    },
+    "2026-11-08:bp-a1": {
+      "rows": [
+        {
+          "kg": "70",
+          "reps": "4",
+          "done": false
+        },
+        {
+          "kg": "70",
+          "reps": "3",
+          "done": false
+        },
+        {
+          "kg": "70",
+          "reps": "2",
+          "done": false
+        },
+        {
+          "kg": "70",
+          "reps": "3",
+          "done": false
+        }
+      ],
+      "mode": "barbell",
+      "notes": ""
+    },
+    "2026-11-08:bp-a2": {
+      "rows": [
+        {
+          "kg": "2.22",
+          "reps": "5",
+          "done": false
+        },
+        {
+          "kg": "2.22",
+          "reps": "5",
+          "done": false
+        },
+        {
+          "kg": "2.22",
+          "reps": "4",
+          "done": false
+        },
+        {
+          "kg": "2.22",
+          "reps": "4",
+          "done": false
+        }
+      ],
+      "mode": "barbell",
+      "notes": ""
+    },
+    "2026-11-08:bp-b1": {
+      "rows": [
+        {
+          "kg": "20",
+          "reps": "4",
+          "done": false
+        },
+        {
+          "kg": "20",
+          "reps": "4",
+          "done": false
+        },
+        {
+          "kg": "20",
+          "reps": "4",
+          "done": false
+        }
+      ],
+      "mode": "barbell",
+      "notes": ""
+    },
+    "2026-11-08:bp-b2": {
+      "rows": [
+        {
+          "kg": "0",
+          "reps": "4",
+          "done": false
+        },
+        {
+          "kg": "0",
+          "reps": "3",
+          "done": false
+        },
+        {
+          "kg": "0",
+          "reps": "3",
+          "done": false
+        }
+      ],
+      "mode": "barbell",
+      "notes": ""
     }
   },
   "lastKg": {
