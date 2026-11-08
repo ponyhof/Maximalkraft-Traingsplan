@@ -13,18 +13,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg: #1B1D1F;
-    --panel: #24262A;
-    --panel-2: #2C2F34;
-    --line: #3A3D42;
-    --chalk: #EDEEEC;
-    --chalk-dim: #A8ABB0;
-    --plate-red: #C8383A;
-    --plate-blue: #2B6CB0;
-    --plate-yellow: #D9A62E;
-    --plate-green: #3F8F5D;
-    --good: #4CAF7D;
-    --bad: #C8383A;
+    --bg: #1B1D1F; --panel: #24262A; --panel-2: #2C2F34; --line: #3A3D42;
+    --chalk: #EDEEEC; --chalk-dim: #A8ABB0;
+    --plate-red: #C8383A; --plate-blue: #2B6CB0; --plate-yellow: #D9A62E; --plate-green: #3F8F5D;
+    --good: #4CAF7D; --bad: #C8383A;
   }
   *{box-sizing:border-box; -webkit-tap-highlight-color: transparent;}
   html,body{margin:0;background:var(--bg);color:var(--chalk);font-family:'Inter', sans-serif;}
@@ -51,7 +43,6 @@
   .settings-panel .row-btns{display:flex;gap:8px;margin-top:14px;}
   .settings-panel button.primary{background:var(--plate-blue);border:none;color:#fff;padding:9px 16px;border-radius:8px;font-size:13px;cursor:pointer;font-family:'Inter',sans-serif;}
   .settings-panel button.secondary{background:none;border:1px solid var(--line);color:var(--chalk-dim);padding:9px 16px;border-radius:8px;font-size:13px;cursor:pointer;font-family:'Inter',sans-serif;}
-  .settings-panel a{color:var(--plate-blue);}
 
   .month-nav{display:flex;align-items:center;justify-content:space-between;margin:18px 0 12px;}
   .month-nav button{background:var(--panel-2);border:1px solid var(--line);color:var(--chalk);width:34px;height:34px;border-radius:8px;font-size:16px;cursor:pointer;}
@@ -100,14 +91,32 @@
   .ex-muscle{color:var(--chalk-dim);font-size:12px;margin-top:2px;margin-left:18px;}
   .ex-target{font-family:'Space Mono',monospace;font-size:12px;color:var(--chalk-dim);white-space:nowrap;text-align:right;}
 
+  .mode-toggle{display:flex;gap:6px;margin:10px 0 2px;}
+  .mode-btn{flex:1;background:var(--panel-2);border:1px solid var(--line);color:var(--chalk-dim);font-size:11.5px;padding:6px;border-radius:7px;cursor:pointer;font-family:'Inter',sans-serif;}
+  .mode-btn.active{color:var(--chalk);border-color:var(--chalk);}
+
+  .quickfill{display:flex;gap:6px;margin:10px 0 4px;align-items:center;}
+  .quickfill input{flex:1;min-width:0;background:var(--panel-2);border:1px solid var(--line);border-radius:6px;color:var(--chalk);font-family:'Space Mono',monospace;font-size:13px;padding:6px 8px;}
+  .quickfill input::placeholder{color:#6b6e73;}
+  .qf-btn{background:var(--panel-2);border:1px solid var(--line);color:var(--chalk);border-radius:6px;padding:6px 10px;font-size:11px;white-space:nowrap;cursor:pointer;flex-shrink:0;font-family:'Inter',sans-serif;}
+
+  .history-line{font-size:11px;color:var(--chalk-dim);margin-top:8px;font-family:'Space Mono',monospace;line-height:1.5;}
+  .history-line b{color:var(--chalk-dim);font-family:'Inter',sans-serif;font-weight:600;}
+
   .sets{margin-top:12px;display:flex;flex-direction:column;gap:6px;}
-  .set-row{display:grid;grid-template-columns:24px 1fr 1fr 34px;gap:8px;align-items:center;}
-  .set-idx{font-family:'Space Mono',monospace;font-size:11px;color:var(--chalk-dim);}
+  .set-row{display:grid;grid-template-columns:22px 1fr 1fr 34px;gap:8px;align-items:flex-start;}
+  .set-idx{font-family:'Space Mono',monospace;font-size:11px;color:var(--chalk-dim);padding-top:8px;}
   .set-row input{background:var(--panel-2);border:1px solid var(--line);border-radius:6px;color:var(--chalk);font-family:'Space Mono',monospace;font-size:13.5px;padding:7px 8px;width:100%;}
   .set-row input::placeholder{color:#6b6e73;}
   .set-row input:focus{outline:none;border-color:var(--plate-blue);}
+  .kg-cell{display:flex;flex-direction:column;gap:2px;}
+  .kg-total{font-size:9.5px;color:var(--chalk-dim);text-align:right;padding-right:2px;}
   .done-btn{width:30px;height:30px;border-radius:7px;border:1px solid var(--line);background:var(--panel-2);color:var(--chalk-dim);cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;}
   .done-btn.done{background:var(--good);border-color:var(--good);color:#0e1a13;}
+
+  .notes-wrap{margin-top:12px;}
+  .notes-label{font-size:11px;color:var(--chalk-dim);display:block;margin-bottom:4px;}
+  .notes-input{width:100%;background:var(--panel-2);border:1px solid var(--line);border-radius:7px;color:var(--chalk);font-family:'Inter',sans-serif;font-size:12.5px;padding:8px 9px;resize:vertical;min-height:34px;}
 
   .rest-bar{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:var(--panel-2);border:1px dashed var(--line);border-radius:8px;margin-left:16px;margin-top:10px;font-family:'Space Mono',monospace;font-size:12.5px;}
   .rest-bar span.label{color:var(--chalk-dim);}
@@ -128,32 +137,32 @@
 const SESSIONS = {
   sq: { key:'sq', title:'Squat-Tag', sub:'Unterkörper & Rumpf', letter:'A', badge:'badge-sq', dotColor:'var(--plate-red)', blocks:[
     { id:'A', afterNote:'3 Minuten Pause nach Block A', pairColor:'red', pairs:[
-      { id:'sq-a1', name:'Kniebeugen (Squats)', muscle:'Beinstrecker (Vorderseite)', dot:'red', sets:4, targetReps:'3–5', pause:'2 Min.' },
-      { id:'sq-a2', name:'Rumänisches Kreuzheben', muscle:'Beinbeuger (Rückseite)', dot:'blue', sets:4, targetReps:'3–5', pause:'2 Min.' }
+      { id:'sq-a1', name:'Kniebeugen (Squats)', muscle:'Beinstrecker (Vorderseite)', dot:'red', sets:4, targetReps:'3–5', pause:'2 Min.', weightMode:'barbell' },
+      { id:'sq-a2', name:'Rumänisches Kreuzheben', muscle:'Beinbeuger (Rückseite)', dot:'blue', sets:4, targetReps:'3–5', pause:'2 Min.', weightMode:'barbell' }
     ]},
     { id:'B', pairColor:'yellow', pairs:[
-      { id:'sq-b1', name:'Ausfallschritte (Lunges)', muscle:'Beine dynamisch / Unilateral', dot:'yellow', sets:3, targetReps:'5 / Bein', pause:'90 Sek.' },
-      { id:'sq-b2', name:'Planks mit Zusatzgewicht', muscle:'Rumpf / Abdomen', dot:'green', sets:3, targetReps:'45 Sek.', pause:'90 Sek.' }
+      { id:'sq-b1', name:'Ausfallschritte (Lunges)', muscle:'Beine dynamisch / Unilateral', dot:'yellow', sets:3, targetReps:'5 / Bein', pause:'90 Sek.', weightMode:'dumbbell' },
+      { id:'sq-b2', name:'Planks mit Zusatzgewicht', muscle:'Rumpf / Abdomen', dot:'green', sets:3, targetReps:'45 Sek.', pause:'90 Sek.', weightMode:'barbell' }
     ]}
   ]},
   bp: { key:'bp', title:'Bench-Tag', sub:'Oberkörper – Drücken & Ziehen', letter:'B', badge:'badge-bp', dotColor:'var(--plate-blue)', blocks:[
     { id:'A', afterNote:'3 Minuten Pause nach Block A', pairColor:'red', pairs:[
-      { id:'bp-a1', name:'Bankdrücken (Bench Press)', muscle:'Brust / Drücken horizontal', dot:'red', sets:4, targetReps:'3–5', pause:'2 Min.' },
-      { id:'bp-a2', name:'Langhantelrudern (Barbell Row)', muscle:'Rücken / Ziehen horizontal', dot:'blue', sets:4, targetReps:'3–5', pause:'2 Min.' }
+      { id:'bp-a1', name:'Bankdrücken (Bench Press)', muscle:'Brust / Drücken horizontal', dot:'red', sets:4, targetReps:'3–5', pause:'2 Min.', weightMode:'barbell' },
+      { id:'bp-a2', name:'Langhantelrudern (Barbell Row)', altName:'Kurzhantelrudern (Dumbbell Row)', muscle:'Rücken / Ziehen horizontal', dot:'blue', sets:4, targetReps:'3–5', pause:'2 Min.', weightMode:'choice' }
     ]},
     { id:'B', pairColor:'yellow', pairs:[
-      { id:'bp-b1', name:'Schulterdrücken (Overhead Press)', muscle:'Schultern / Drücken vertikal', dot:'yellow', sets:3, targetReps:'3–5', pause:'2 Min.' },
-      { id:'bp-b2', name:'Klimmzüge mit Zusatzgewicht (oder Latzug)', muscle:'Latissimus / Ziehen vertikal', dot:'green', sets:3, targetReps:'3–5', pause:'2 Min.' }
+      { id:'bp-b1', name:'Schulterdrücken (Overhead Press)', muscle:'Schultern / Drücken vertikal', dot:'yellow', sets:3, targetReps:'3–5', pause:'2 Min.', weightMode:'barbell' },
+      { id:'bp-b2', name:'Klimmzüge mit Zusatzgewicht (oder Latzug)', muscle:'Latissimus / Ziehen vertikal', dot:'green', sets:3, targetReps:'3–5', pause:'2 Min.', weightMode:'barbell' }
     ]}
   ]},
   dl: { key:'dl', title:'Deadlift-Tag', sub:'Ganzkörper & Kette hinten/vorne', letter:'C', badge:'badge-dl', dotColor:'var(--plate-yellow)', blocks:[
     { id:'A', afterNote:'3 Minuten Pause nach Block A', pairColor:'red', pairs:[
-      { id:'dl-a1', name:'Kreuzheben (Deadlift)', muscle:'Ganzkörper / Kette hinten', dot:'red', sets:4, targetReps:'1–3', pause:'2.5 Min.' },
-      { id:'dl-a2', name:'Schrägbankdrücken mit Kurzhanteln', muscle:'Brust oben / Drücken', dot:'blue', sets:4, targetReps:'3–5', pause:'2.5 Min.' }
+      { id:'dl-a1', name:'Kreuzheben (Deadlift)', muscle:'Ganzkörper / Kette hinten', dot:'red', sets:4, targetReps:'1–3', pause:'2.5 Min.', weightMode:'barbell' },
+      { id:'dl-a2', name:'Schrägbankdrücken mit Kurzhanteln', muscle:'Brust oben / Drücken', dot:'blue', sets:4, targetReps:'3–5', pause:'2.5 Min.', weightMode:'dumbbell' }
     ]},
     { id:'B', pairColor:'yellow', pairs:[
-      { id:'dl-b1', name:'Face Pulls', muscle:'Hintere Schulter / Rotatoren', dot:'yellow', sets:3, targetReps:'10–12', pause:'60 Sek.' },
-      { id:'dl-b2', name:'Abdominal Rollouts', muscle:'Rumpf / Bauch', dot:'green', sets:3, targetReps:'5–8', pause:'60 Sek.' }
+      { id:'dl-b1', name:'Face Pulls', muscle:'Hintere Schulter / Rotatoren', dot:'yellow', sets:3, targetReps:'10–12', pause:'60 Sek.', weightMode:'barbell' },
+      { id:'dl-b2', name:'Abdominal Rollouts', muscle:'Rumpf / Bauch', dot:'green', sets:3, targetReps:'5–8', pause:'60 Sek.', weightMode:'barbell' }
     ]}
   ]}
 };
@@ -171,16 +180,16 @@ let viewYear = today.getFullYear();
 let viewMonth = today.getMonth();
 let selectedDate = null;
 let showSettings = false;
+let notifyPermissionAsked = false;
 
-// Gesamter Datenblock: wird lokal gecacht UND (falls eingerichtet) mit GitHub synchronisiert
 let store = { dayTypes:{}, logs:{}, lastKg:{} };
-let ghConfig = null; // {owner, repo, token}
-let ghSha = null;    // aktueller Datei-Hash auf GitHub, nötig zum Ueberschreiben
-let syncState = 'off'; // off | ok | syncing | error
+let ghConfig = null;
+let ghSha = null;
+let syncState = 'off';
 let lastSyncTime = null;
 let saveTimeout = null;
 
-const timers = {};
+const timers = {}; // key -> {endTime, running, total, intervalId}
 
 function pauseSecondsFromString(str){
   const m = str.match(/([\d.]+)/);
@@ -189,6 +198,7 @@ function pauseSecondsFromString(str){
   return str.toLowerCase().includes('min') ? Math.round(n*60) : Math.round(n);
 }
 function fmtTime(sec){
+  sec = Math.max(0, sec);
   const m = Math.floor(sec/60), s = sec%60;
   return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
 }
@@ -197,18 +207,10 @@ function b64EncodeUnicode(str){ return btoa(unescape(encodeURIComponent(str))); 
 function b64DecodeUnicode(str){ return decodeURIComponent(escape(atob(str))); }
 
 function loadLocalCache(){
-  try{
-    const raw = localStorage.getItem('kraftplan-data');
-    if(raw) store = JSON.parse(raw);
-  }catch(e){}
-  try{
-    const cfg = localStorage.getItem('gh-config');
-    if(cfg) ghConfig = JSON.parse(cfg);
-  }catch(e){}
+  try{ const raw = localStorage.getItem('kraftplan-data'); if(raw) store = JSON.parse(raw); }catch(e){}
+  try{ const cfg = localStorage.getItem('gh-config'); if(cfg) ghConfig = JSON.parse(cfg); }catch(e){}
 }
-function saveLocalCache(){
-  try{ localStorage.setItem('kraftplan-data', JSON.stringify(store)); }catch(e){}
-}
+function saveLocalCache(){ try{ localStorage.setItem('kraftplan-data', JSON.stringify(store)); }catch(e){} }
 
 async function ghLoad(){
   if(!ghConfig || !ghConfig.owner || !ghConfig.repo || !ghConfig.token) return false;
@@ -216,47 +218,31 @@ async function ghLoad(){
   try{
     const url = `https://api.github.com/repos/${ghConfig.owner}/${ghConfig.repo}/contents/data.json`;
     const res = await fetch(url, { headers: { 'Authorization': 'token '+ghConfig.token, 'Accept':'application/vnd.github+json' } });
-    if(res.status === 404){
-      ghSha = null;
-      syncState = 'ok'; lastSyncTime = new Date();
-      return true; // noch keine Datei auf GitHub - lokaler Stand gilt als Basis
-    }
+    if(res.status === 404){ ghSha = null; syncState='ok'; lastSyncTime=new Date(); return true; }
     if(!res.ok) throw new Error('HTTP '+res.status);
     const json = await res.json();
     ghSha = json.sha;
     const content = b64DecodeUnicode(json.content.replace(/\n/g,''));
     store = JSON.parse(content);
     saveLocalCache();
-    syncState = 'ok'; lastSyncTime = new Date();
+    syncState='ok'; lastSyncTime=new Date();
     return true;
-  }catch(e){
-    syncState = 'error';
-    return false;
-  }
+  }catch(e){ syncState='error'; return false; }
 }
 
 async function ghSave(){
   if(!ghConfig || !ghConfig.owner || !ghConfig.repo || !ghConfig.token) return;
-  syncState = 'syncing'; render();
+  syncState='syncing'; render();
   try{
     const url = `https://api.github.com/repos/${ghConfig.owner}/${ghConfig.repo}/contents/data.json`;
-    const body = {
-      message: 'Kraftplan-Daten aktualisiert',
-      content: b64EncodeUnicode(JSON.stringify(store, null, 2))
-    };
+    const body = { message:'Kraftplan-Daten aktualisiert', content: b64EncodeUnicode(JSON.stringify(store, null, 2)) };
     if(ghSha) body.sha = ghSha;
-    const res = await fetch(url, {
-      method:'PUT',
-      headers:{ 'Authorization':'token '+ghConfig.token, 'Accept':'application/vnd.github+json', 'Content-Type':'application/json' },
-      body: JSON.stringify(body)
-    });
+    const res = await fetch(url, { method:'PUT', headers:{ 'Authorization':'token '+ghConfig.token, 'Accept':'application/vnd.github+json', 'Content-Type':'application/json' }, body: JSON.stringify(body) });
     if(!res.ok) throw new Error('HTTP '+res.status);
     const json = await res.json();
     ghSha = json.content.sha;
-    syncState = 'ok'; lastSyncTime = new Date();
-  }catch(e){
-    syncState = 'error';
-  }
+    syncState='ok'; lastSyncTime=new Date();
+  }catch(e){ syncState='error'; }
   render();
 }
 
@@ -272,22 +258,66 @@ async function setDayType(date, sessionKey){
   scheduleSave();
 }
 
+function defaultMode(ex){ return ex.weightMode==='dumbbell' ? 'dumbbell' : (ex.weightMode==='choice' ? 'barbell' : 'barbell'); }
+
+function getPreviousLog(exId, currentDate){
+  let best = null;
+  for(const cacheKey in store.logs){
+    const sep = cacheKey.indexOf(':');
+    const date = cacheKey.slice(0, sep);
+    const exId2 = cacheKey.slice(sep+1);
+    if(exId2 !== exId || date === currentDate) continue;
+    if(!best || date > best.date) best = { date, data: store.logs[cacheKey] };
+  }
+  return best ? best.data : null;
+}
+
 function getExercise(date, ex){
   const cacheKey = date+':'+ex.id;
   let data = store.logs[cacheKey];
   if(!data || !Array.isArray(data.rows) || data.rows.length !== ex.sets){
+    const prev = getPreviousLog(ex.id, date);
     const lastKg = store.lastKg[ex.id] || '';
-    data = { rows: Array.from({length:ex.sets}, ()=>({kg:lastKg, reps:'', done:false})) };
+    const rows = Array.from({length:ex.sets}, (_, idx)=>{
+      if(prev && prev.rows && prev.rows[idx]){
+        return { kg: prev.rows[idx].kg || '', reps: prev.rows[idx].reps || '', done:false };
+      }
+      return { kg:lastKg, reps:'', done:false };
+    });
+    data = { rows, mode: (prev && prev.mode) || defaultMode(ex), notes: (prev && prev.notes) || '' };
     store.logs[cacheKey] = data;
   }
+  if(data.mode===undefined) data.mode = defaultMode(ex);
+  if(data.notes===undefined) data.notes = '';
   return data;
+}
+
+function isDumbbell(ex, data){ return ex.weightMode==='dumbbell' || (ex.weightMode==='choice' && data.mode==='dumbbell'); }
+
+function historyForExercise(exId, excludeDate){
+  const entries = [];
+  for(const cacheKey in store.logs){
+    const parts = cacheKey.split(':');
+    const date = parts[0];
+    const exId2 = parts.slice(1).join(':');
+    if(exId2 !== exId || date === excludeDate) continue;
+    const data = store.logs[cacheKey];
+    const withWeight = (data.rows||[]).filter(r => r.kg !== '' && r.kg !== null && r.kg !== undefined);
+    if(withWeight.length===0) continue;
+    let best = withWeight[0];
+    withWeight.forEach(r=>{ if(parseFloat(r.kg)>parseFloat(best.kg)) best = r; });
+    const isDb = data.mode==='dumbbell';
+    const totalKg = isDb ? (parseFloat(best.kg)*2) : parseFloat(best.kg);
+    entries.push({ date, label: `${totalKg}kg${best.reps?'×'+best.reps:''}` });
+  }
+  entries.sort((a,b)=> a.date < b.date ? 1 : -1);
+  return entries.slice(0,4);
 }
 
 function renderCalendar(){
   const first = new Date(viewYear, viewMonth, 1);
   const offset = (first.getDay()+6)%7;
   const daysInMonth = new Date(viewYear, viewMonth+1, 0).getDate();
-
   let cells = '';
   for(let i=0;i<offset;i++) cells += `<div class="cell pad"></div>`;
   for(let d=1; d<=daysInMonth; d++){
@@ -295,14 +325,11 @@ function renderCalendar(){
     const type = store.dayTypes[key];
     const isToday = key === todayKey;
     const isSel = key === selectedDate;
-    cells += `
-      <div class="cell ${isToday?'today':''} ${isSel?'selected':''}" data-date="${key}">
-        <span class="num">${d}</span>
-        ${type ? `<span class="badge ${SESSIONS[type].badge}">${SESSIONS[type].letter}</span>` : ''}
-      </div>
-    `;
+    cells += `<div class="cell ${isToday?'today':''} ${isSel?'selected':''}" data-date="${key}">
+      <span class="num">${d}</span>
+      ${type ? `<span class="badge ${SESSIONS[type].badge}">${SESSIONS[type].letter}</span>` : ''}
+    </div>`;
   }
-
   return `
     <div class="month-nav">
       <button data-nav="-1">‹</button>
@@ -311,15 +338,12 @@ function renderCalendar(){
     </div>
     <div class="weekdays">${WEEKDAYS.map(w=>`<span>${w}</span>`).join('')}</div>
     <div class="grid">${cells}</div>
-    <div class="legend">
-      ${Object.values(SESSIONS).map(s=>`<span><i style="background:${s.dotColor}"></i>${s.letter} · ${s.title}</span>`).join('')}
-    </div>
+    <div class="legend">${Object.values(SESSIONS).map(s=>`<span><i style="background:${s.dotColor}"></i>${s.letter} · ${s.title}</span>`).join('')}</div>
   `;
 }
 
 function renderPanel(){
   if(!selectedDate) return '';
-
   const [y,m,d] = selectedDate.split('-').map(Number);
   const wd = WEEKDAYS_LONG[(new Date(y, m-1, d).getDay()+6)%7];
   const sessionKey = store.dayTypes[selectedDate];
@@ -331,11 +355,9 @@ function renderPanel(){
         <button class="type-btn ${sessionKey===s.key?'active':''}" data-set-type="${s.key}">
           ${s.letter} · ${s.title}
           <div class="dotline" style="background:${s.dotColor}"></div>
-        </button>
-      `).join('')}
+        </button>`).join('')}
       <button class="type-btn clear" data-set-type="">✕ Kein Training</button>
-    </div>
-  `;
+    </div>`;
 
   if(sessionKey){
     const session = SESSIONS[sessionKey];
@@ -343,36 +365,57 @@ function renderPanel(){
       html += `<div class="block"><div class="block-label"><span>BLOCK ${block.id}</span><span class="line"></span></div>`;
       block.pairs.forEach((ex, idx)=>{
         const data = getExercise(selectedDate, ex);
+        const db = isDumbbell(ex, data);
+        const displayName = (ex.weightMode==='choice' && data.mode==='dumbbell' && ex.altName) ? ex.altName : ex.name;
+        const hist = historyForExercise(ex.id, selectedDate);
         html += `<div class="pair pair-${block.pairColor}" style="margin-bottom:${idx===0?'10px':'0'};">
           <div class="exercise">
             <div class="ex-head">
               <div>
-                <div class="ex-name-row"><span class="plate-dot dot-${ex.dot}"></span><span class="ex-name">${ex.id.split('-')[1].toUpperCase()} · ${ex.name}</span></div>
+                <div class="ex-name-row"><span class="plate-dot dot-${ex.dot}"></span><span class="ex-name">${ex.id.split('-')[1].toUpperCase()} · ${displayName}</span></div>
                 <div class="ex-muscle">${ex.muscle}</div>
               </div>
               <div class="ex-target">${ex.sets} × ${ex.targetReps}<br>Pause ${ex.pause}</div>
+            </div>
+            ${ex.weightMode==='choice' ? `
+              <div class="mode-toggle">
+                <button class="mode-btn ${data.mode==='barbell'?'active':''}" data-mode-ex="${ex.id}" data-mode="barbell">Langhantel</button>
+                <button class="mode-btn ${data.mode==='dumbbell'?'active':''}" data-mode-ex="${ex.id}" data-mode="dumbbell">Kurzhantel</button>
+              </div>` : ''}
+            <div class="quickfill">
+              <input type="text" inputmode="decimal" placeholder="${db?'kg/Hantel':'kg'}" id="qf-kg-${ex.id}">
+              <input type="text" inputmode="decimal" placeholder="Wdh." id="qf-reps-${ex.id}">
+              <button class="qf-btn" data-qf-ex="${ex.id}">↓ Für alle Sätze</button>
             </div>
             <div class="sets">
               ${data.rows.map((row,i)=>`
                 <div class="set-row">
                   <span class="set-idx">${i+1}</span>
-                  <input type="text" inputmode="decimal" placeholder="kg" value="${row.kg}" data-ex="${ex.id}" data-i="${i}" data-field="kg">
+                  <div class="kg-cell">
+                    <input type="text" inputmode="decimal" placeholder="${db?'kg/Hantel':'kg'}" value="${row.kg}" data-ex="${ex.id}" data-i="${i}" data-field="kg">
+                    ${db ? `<span class="kg-total">Σ ${row.kg!==''&&!isNaN(parseFloat(row.kg)) ? (parseFloat(row.kg)*2) : '–'} kg</span>` : ''}
+                  </div>
                   <input type="text" inputmode="decimal" placeholder="Wdh." value="${row.reps}" data-ex="${ex.id}" data-i="${i}" data-field="reps">
                   <button class="done-btn ${row.done?'done':''}" data-ex="${ex.id}" data-i="${i}">${row.done?'✓':''}</button>
-                </div>
-              `).join('')}
+                </div>`).join('')}
             </div>
+            <div class="notes-wrap">
+              <label class="notes-label">Bemerkungen</label>
+              <textarea class="notes-input" rows="1" data-notes-ex="${ex.id}" placeholder="z. B. Technik, Befinden, Ausrüstung ...">${data.notes}</textarea>
+            </div>
+            ${hist.length ? `<div class="history-line"><b>Verlauf:</b> ${hist.map(h=>{const [hy,hm,hd]=h.date.split('-');return `${hd}.${hm}. ${h.label}`;}).join(' · ')}</div>` : ''}
           </div>
         </div>`;
       });
       const pairKey = block.id+'-'+selectedDate;
       const secs = pauseSecondsFromString(block.pairs[0].pause);
-      if(!timers[pairKey]) timers[pairKey] = {remaining:secs, running:false, total:secs};
+      if(!timers[pairKey]) timers[pairKey] = {endTime:null, running:false, total:secs, remaining:secs};
       const t = timers[pairKey];
+      const remainingNow = t.running ? Math.max(0, Math.round((t.endTime - Date.now())/1000)) : t.remaining;
       html += `<div class="rest-bar">
         <span class="label">Pause ${block.id}1 ⇄ ${block.id}2</span>
         <div class="rest-controls">
-          <span class="rest-time ${t.running?'running':(t.remaining===0?'zero':'')}" id="time-${pairKey}">${fmtTime(t.remaining)}</span>
+          <span class="rest-time ${t.running?'running':(remainingNow===0?'zero':'')}" id="time-${pairKey}">${fmtTime(remainingNow)}</span>
           <button class="rest-btn" data-timer="${pairKey}" data-action="toggle">${t.running?'Pause':'Start'}</button>
           <button class="rest-btn" data-timer="${pairKey}" data-action="reset">↺</button>
         </div>
@@ -381,7 +424,6 @@ function renderPanel(){
       html += `</div>`;
     });
   }
-
   html += `</div>`;
   return html;
 }
@@ -389,23 +431,26 @@ function renderPanel(){
 function renderSettings(){
   if(!showSettings) return '';
   const cfg = ghConfig || {owner:'', repo:'', token:''};
+  const ntfyTopic = localStorage.getItem('ntfy-topic') || '';
   return `
     <div class="settings-panel">
       <h2>Geräteübergreifende Synchronisation</h2>
-      <p>Daten werden in einer Datei <code>data.json</code> in deinem GitHub-Repository gespeichert. Auf jedem Gerät hier dieselben Angaben eintragen, dann sind die Einträge überall gleich.</p>
+      <p>Daten werden in einer Datei <code>data.json</code> in deinem GitHub-Repository gespeichert. Auf jedem Gerät hier dieselben Angaben eintragen.</p>
       <label>GitHub-Benutzername</label>
       <input id="cfg-owner" type="text" value="${cfg.owner}" placeholder="z. B. maxmuster" autocapitalize="off" autocorrect="off">
       <label>Repository-Name</label>
       <input id="cfg-repo" type="text" value="${cfg.repo}" placeholder="z. B. kraftplan" autocapitalize="off" autocorrect="off">
       <label>Personal Access Token</label>
       <input id="cfg-token" type="password" value="${cfg.token}" placeholder="ghp_..." autocapitalize="off" autocorrect="off">
-      <p style="margin-top:8px;">Token erstellen unter github.com → Settings → Developer settings → Personal access tokens → Fine-grained tokens, mit Schreibrecht ("Contents: Read and write") für dieses Repository.</p>
+      <h2 style="margin-top:18px;">Timer-Benachrichtigung bei gesperrtem iPhone</h2>
+      <p>Kostenlose App <b>"ntfy"</b> aus dem App Store installieren, dort ein eigenes Thema abonnieren (z. B. <code>kraftplan-dein-name-1234</code>) und hier denselben Namen eintragen.</p>
+      <label>Ntfy-Thema (optional)</label>
+      <input id="cfg-ntfy" type="text" value="${ntfyTopic}" placeholder="z. B. kraftplan-max-7391" autocapitalize="off" autocorrect="off">
       <div class="row-btns">
         <button class="primary" id="cfg-save">Speichern & synchronisieren</button>
         <button class="secondary" id="cfg-close">Schliessen</button>
       </div>
-    </div>
-  `;
+    </div>`;
 }
 
 function render(){
@@ -413,11 +458,10 @@ function render(){
   let statusLabel = 'Nur auf diesem Gerät gespeichert';
   let dotClass = '';
   if(ghConfig && ghConfig.token){
-    if(syncState==='syncing'){ statusLabel = 'Synchronisiere …'; dotClass=''; }
-    else if(syncState==='ok'){ statusLabel = 'Synchronisiert' + (lastSyncTime ? ' · '+lastSyncTime.toLocaleTimeString('de-CH',{hour:'2-digit',minute:'2-digit'}) : ''); dotClass='ok'; }
-    else if(syncState==='error'){ statusLabel = 'Synchronisation fehlgeschlagen'; dotClass='err'; }
+    if(syncState==='syncing'){ statusLabel='Synchronisiere …'; dotClass=''; }
+    else if(syncState==='ok'){ statusLabel='Synchronisiert'+(lastSyncTime?' · '+lastSyncTime.toLocaleTimeString('de-CH',{hour:'2-digit',minute:'2-digit'}):''); dotClass='ok'; }
+    else if(syncState==='error'){ statusLabel='Synchronisation fehlgeschlagen'; dotClass='err'; }
   }
-
   app.innerHTML = `
     <header>
       <div class="brand">
@@ -428,16 +472,12 @@ function render(){
           <rect x="21" y="10" width="3" height="10" rx="1" fill="#D9A62E"/>
           <rect x="25" y="13" width="4" height="4" rx="1" fill="#2B6CB0"/>
         </svg>
-        <div>
-          <h1>Kraftplan</h1>
-          <div class="subtitle">Antagonisten-Supersätze</div>
-        </div>
+        <div><h1>Kraftplan</h1><div class="subtitle">Antagonisten-Supersätze</div></div>
       </div>
       <button class="icon-btn" id="settings-toggle">⚙</button>
     </header>
     <div class="sync-status">
-      <span class="sync-dot ${dotClass}"></span>
-      <span>${statusLabel}</span>
+      <span class="sync-dot ${dotClass}"></span><span>${statusLabel}</span>
       ${ghConfig && ghConfig.token ? `<button id="manual-sync">Jetzt aktualisieren</button>` : ''}
     </div>
     ${renderSettings()}
@@ -449,11 +489,9 @@ function render(){
 
 function attachHandlers(){
   const st = document.getElementById('settings-toggle');
-  if(st) st.addEventListener('click', ()=>{ showSettings = !showSettings; render(); });
-
+  if(st) st.addEventListener('click', ()=>{ showSettings=!showSettings; render(); });
   const closeBtn = document.getElementById('cfg-close');
   if(closeBtn) closeBtn.addEventListener('click', ()=>{ showSettings=false; render(); });
-
   const saveBtn = document.getElementById('cfg-save');
   if(saveBtn) saveBtn.addEventListener('click', async ()=>{
     const owner = document.getElementById('cfg-owner').value.trim();
@@ -461,17 +499,13 @@ function attachHandlers(){
     const token = document.getElementById('cfg-token').value.trim();
     ghConfig = { owner, repo, token };
     try{ localStorage.setItem('gh-config', JSON.stringify(ghConfig)); }catch(e){}
-    showSettings = false;
+    const ntfyVal = document.getElementById('cfg-ntfy').value.trim();
+    try{ localStorage.setItem('ntfy-topic', ntfyVal); }catch(e){}
+    showSettings=false;
     const ok = await ghLoad();
-    if(!ok && syncState==='error'){
-      // Falls noch keine Datei existiert, direkt den aktuellen lokalen Stand hochladen
-      await ghSave();
-    } else if(ghSha===null){
-      await ghSave();
-    }
+    if(ghSha===null) await ghSave();
     render();
   });
-
   const manualSync = document.getElementById('manual-sync');
   if(manualSync) manualSync.addEventListener('click', async ()=>{ await ghLoad(); render(); });
 
@@ -484,16 +518,40 @@ function attachHandlers(){
       render();
     });
   });
-
   document.querySelectorAll('.cell[data-date]').forEach(cell=>{
     cell.addEventListener('click', ()=>{ selectedDate = cell.dataset.date; render(); });
   });
-
   document.querySelectorAll('[data-set-type]').forEach(btn=>{
-    btn.addEventListener('click', async ()=>{
-      const val = btn.dataset.setType;
-      await setDayType(selectedDate, val || null);
-      render();
+    btn.addEventListener('click', async ()=>{ await setDayType(selectedDate, btn.dataset.setType || null); render(); });
+  });
+  document.querySelectorAll('[data-mode-ex]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const exId = btn.dataset.modeEx;
+      const cacheKey = selectedDate+':'+exId;
+      store.logs[cacheKey].mode = btn.dataset.mode;
+      scheduleSave(); render();
+    });
+  });
+  document.querySelectorAll('[data-qf-ex]').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const exId = btn.dataset.qfEx;
+      const kgVal = document.getElementById('qf-kg-'+exId).value;
+      const repsVal = document.getElementById('qf-reps-'+exId).value;
+      const cacheKey = selectedDate+':'+exId;
+      const data = store.logs[cacheKey];
+      data.rows.forEach(row=>{ row.kg = kgVal; row.reps = repsVal; });
+      if(kgVal !== '') store.lastKg[exId] = kgVal;
+      scheduleSave();
+      document.querySelectorAll(`input[data-ex="${exId}"][data-field="kg"]`).forEach(inp=>{
+        inp.value = kgVal;
+        const cell = inp.closest('.kg-cell');
+        const totalSpan = cell ? cell.querySelector('.kg-total') : null;
+        if(totalSpan){
+          const val = parseFloat(kgVal);
+          totalSpan.textContent = 'Σ ' + (isNaN(val) ? '–' : (val*2)) + ' kg';
+        }
+      });
+      document.querySelectorAll(`input[data-ex="${exId}"][data-field="reps"]`).forEach(inp=>{ inp.value = repsVal; });
     });
   });
 
@@ -502,21 +560,37 @@ function attachHandlers(){
       const {ex, i, field} = e.target.dataset;
       const cacheKey = selectedDate+':'+ex;
       store.logs[cacheKey].rows[i][field] = e.target.value;
-      if(field==='kg') store.lastKg[ex] = e.target.value;
+      if(field==='kg'){
+        store.lastKg[ex] = e.target.value;
+        const cell = e.target.closest('.kg-cell');
+        const totalSpan = cell ? cell.querySelector('.kg-total') : null;
+        if(totalSpan){
+          const val = parseFloat(e.target.value);
+          totalSpan.textContent = 'Σ ' + (isNaN(val) ? '–' : (val*2)) + ' kg';
+        }
+      }
       scheduleSave();
     });
   });
-
+  document.querySelectorAll('.notes-input').forEach(ta=>{
+    ta.addEventListener('change', (e)=>{
+      const exId = e.target.dataset.notesEx;
+      const cacheKey = selectedDate+':'+exId;
+      store.logs[cacheKey].notes = e.target.value;
+      scheduleSave();
+    });
+  });
   document.querySelectorAll('.done-btn').forEach(btn=>{
     btn.addEventListener('click', ()=>{
       const {ex, i} = btn.dataset;
       const cacheKey = selectedDate+':'+ex;
-      store.logs[cacheKey].rows[i].done = !store.logs[cacheKey].rows[i].done;
+      const nowDone = !store.logs[cacheKey].rows[i].done;
+      store.logs[cacheKey].rows[i].done = nowDone;
       scheduleSave();
-      render();
+      btn.classList.toggle('done', nowDone);
+      btn.textContent = nowDone ? '✓' : '';
     });
   });
-
   document.querySelectorAll('[data-timer]').forEach(btn=>{
     btn.addEventListener('click', ()=>{
       const key = btn.dataset.timer;
@@ -524,23 +598,43 @@ function attachHandlers(){
       const t = timers[key];
       if(action==='reset'){
         clearInterval(t.intervalId);
-        t.running=false; t.remaining=t.total;
-        render();
-        return;
+        t.running=false; t.remaining=t.total; t.endTime=null;
+        render(); return;
       }
       if(action==='toggle'){
-        if(t.running){ clearInterval(t.intervalId); t.running=false; }
-        else{
-          t.running=true;
-          t.intervalId = setInterval(()=>{
-            t.remaining--;
+        if(t.running){
+          t.remaining = Math.max(0, Math.round((t.endTime - Date.now())/1000));
+          clearInterval(t.intervalId); t.running=false;
+        } else {
+          if(!notifyPermissionAsked && 'Notification' in window){
+            notifyPermissionAsked = true;
+            try{ Notification.requestPermission(); }catch(e){}
+          }
+          const ntfyTopic = localStorage.getItem('ntfy-topic');
+          if(ntfyTopic){
+            fetch('https://ntfy.sh/'+encodeURIComponent(ntfyTopic), {
+              method:'POST',
+              headers:{ 'Title':'Kraftplan', 'Priority':'high', 'Tags':'stopwatch', 'X-Delay': t.remaining+'s' },
+              body: 'Pause vorbei – bereit für den nächsten Satz.'
+            }).catch(()=>{ /* kein Internet o.ä. - stumm ignorieren */ });
+          }
+          t.endTime = Date.now() + t.remaining*1000;
+          t.running = true;
+          const tick = ()=>{
+            const rem = Math.max(0, Math.round((t.endTime - Date.now())/1000));
             const el = document.getElementById('time-'+key);
-            if(el){
-              el.textContent = fmtTime(Math.max(t.remaining,0));
-              el.className = 'rest-time ' + (t.remaining<=0?'zero':'running');
+            if(el){ el.textContent = fmtTime(rem); el.className = 'rest-time ' + (rem<=0?'zero':'running'); }
+            if(rem<=0){
+              clearInterval(t.intervalId); t.running=false; t.remaining=0;
+              try{
+                if('Notification' in window && Notification.permission==='granted'){
+                  new Notification('Pause vorbei', { body:'Bereit für den nächsten Satz.' });
+                }
+              }catch(e){}
+              try{ if(navigator.vibrate) navigator.vibrate([200,80,200]); }catch(e){}
             }
-            if(t.remaining<=0){ clearInterval(t.intervalId); t.running=false; }
-          },1000);
+          };
+          t.intervalId = setInterval(tick, 1000);
         }
         render();
       }
@@ -548,13 +642,24 @@ function attachHandlers(){
   });
 }
 
+document.addEventListener('visibilitychange', ()=>{
+  if(!document.hidden){
+    // Beim Zurückkehren laufende Timer anhand echter Zeitdifferenz korrigieren
+    Object.keys(timers).forEach(key=>{
+      const t = timers[key];
+      if(t.running){
+        const rem = Math.max(0, Math.round((t.endTime - Date.now())/1000));
+        if(rem<=0){ clearInterval(t.intervalId); t.running=false; t.remaining=0; }
+      }
+    });
+    render();
+  }
+});
+
 async function init(){
   loadLocalCache();
   render();
-  if(ghConfig && ghConfig.token){
-    await ghLoad();
-    render();
-  }
+  if(ghConfig && ghConfig.token){ await ghLoad(); render(); }
 }
 init();
 </script>
