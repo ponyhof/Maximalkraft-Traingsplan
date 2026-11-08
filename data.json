@@ -2514,8 +2514,8 @@
       "rows": [
         {
           "kg": "65",
-          "reps": "",
-          "done": false
+          "reps": "3",
+          "done": true
         },
         {
           "kg": "65",
