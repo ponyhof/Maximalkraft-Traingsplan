@@ -13,7 +13,8 @@
     "2026-10-20": "bp",
     "2026-10-27": "dl",
     "2026-11-03": "sq",
-    "2026-11-08": "bp"
+    "2026-11-08": "bp",
+    "2026-11-14": "dl"
   },
   "logs": {
     "2026-07-29:sq-a1": {
@@ -2603,6 +2604,100 @@
       ],
       "mode": "barbell",
       "notes": "Schoulderpress mehr Gewicht"
+    },
+    "2026-11-14:dl-a1": {
+      "rows": [
+        {
+          "kg": "45",
+          "reps": "5",
+          "done": false
+        },
+        {
+          "kg": "45",
+          "reps": "4",
+          "done": false
+        },
+        {
+          "kg": "45",
+          "reps": "5",
+          "done": false
+        },
+        {
+          "kg": "45",
+          "reps": "5",
+          "done": false
+        }
+      ],
+      "mode": "barbell",
+      "notes": ""
+    },
+    "2026-11-14:dl-a2": {
+      "rows": [
+        {
+          "kg": "2.20",
+          "reps": "4",
+          "done": false
+        },
+        {
+          "kg": "2.20",
+          "reps": "4",
+          "done": false
+        },
+        {
+          "kg": "2.20",
+          "reps": "5",
+          "done": false
+        },
+        {
+          "kg": "2.20",
+          "reps": "5",
+          "done": false
+        }
+      ],
+      "mode": "dumbbell",
+      "notes": ""
+    },
+    "2026-11-14:dl-b1": {
+      "rows": [
+        {
+          "kg": "12",
+          "reps": "11",
+          "done": false
+        },
+        {
+          "kg": "12",
+          "reps": "10",
+          "done": false
+        },
+        {
+          "kg": "10",
+          "reps": "10",
+          "done": false
+        }
+      ],
+      "mode": "barbell",
+      "notes": ""
+    },
+    "2026-11-14:dl-b2": {
+      "rows": [
+        {
+          "kg": "0",
+          "reps": "5",
+          "done": false
+        },
+        {
+          "kg": "0",
+          "reps": "5",
+          "done": false
+        },
+        {
+          "kg": "0",
+          "reps": "5",
+          "done": false
+        }
+      ],
+      "mode": "barbell",
+      "notes": ""
     }
   },
   "lastKg": {
