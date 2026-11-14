@@ -2662,7 +2662,7 @@
         {
           "kg": "10",
           "reps": "10",
-          "done": false
+          "done": true
         },
         {
           "kg": "8",
