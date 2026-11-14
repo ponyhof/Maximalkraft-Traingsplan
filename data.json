@@ -2651,7 +2651,7 @@
         {
           "kg": "22",
           "reps": "3",
-          "done": false
+          "done": true
         }
       ],
       "mode": "dumbbell",
