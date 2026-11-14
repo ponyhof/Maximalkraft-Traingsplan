@@ -2660,18 +2660,18 @@
     "2026-11-14:dl-b1": {
       "rows": [
         {
-          "kg": "10",
+          "kg": "",
           "reps": "10",
           "done": false
         },
         {
-          "kg": "8",
-          "reps": "",
+          "kg": "",
+          "reps": "10",
           "done": false
         },
         {
-          "kg": "8",
-          "reps": "",
+          "kg": "",
+          "reps": "10",
           "done": false
         }
       ],
