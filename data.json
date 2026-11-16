@@ -14,7 +14,8 @@
     "2026-10-27": "dl",
     "2026-11-03": "sq",
     "2026-11-08": "bp",
-    "2026-11-14": "dl"
+    "2026-11-14": "dl",
+    "2026-11-16": "bp"
   },
   "logs": {
     "2026-07-29:sq-a1": {
@@ -2698,6 +2699,100 @@
       ],
       "mode": "barbell",
       "notes": ""
+    },
+    "2026-11-16:bp-a1": {
+      "rows": [
+        {
+          "kg": "65",
+          "reps": "3",
+          "done": false
+        },
+        {
+          "kg": "60",
+          "reps": "4",
+          "done": false
+        },
+        {
+          "kg": "60",
+          "reps": "3",
+          "done": false
+        },
+        {
+          "kg": "55",
+          "reps": "3",
+          "done": false
+        }
+      ],
+      "mode": "barbell",
+      "notes": ""
+    },
+    "2026-11-16:bp-a2": {
+      "rows": [
+        {
+          "kg": "22",
+          "reps": "5",
+          "done": false
+        },
+        {
+          "kg": "22",
+          "reps": "4",
+          "done": false
+        },
+        {
+          "kg": "22",
+          "reps": "4",
+          "done": false
+        },
+        {
+          "kg": "22",
+          "reps": "5",
+          "done": false
+        }
+      ],
+      "mode": "dumbbell",
+      "notes": "mehr Gewicht"
+    },
+    "2026-11-16:bp-b1": {
+      "rows": [
+        {
+          "kg": "20",
+          "reps": "4",
+          "done": false
+        },
+        {
+          "kg": "20",
+          "reps": "5",
+          "done": false
+        },
+        {
+          "kg": "20",
+          "reps": "5",
+          "done": false
+        }
+      ],
+      "mode": "barbell",
+      "notes": ""
+    },
+    "2026-11-16:bp-b2": {
+      "rows": [
+        {
+          "kg": "0",
+          "reps": "4",
+          "done": false
+        },
+        {
+          "kg": "0",
+          "reps": "3",
+          "done": false
+        },
+        {
+          "kg": "0",
+          "reps": "3",
+          "done": false
+        }
+      ],
+      "mode": "barbell",
+      "notes": "Schoulderpress mehr Gewicht"
     }
   },
   "lastKg": {
