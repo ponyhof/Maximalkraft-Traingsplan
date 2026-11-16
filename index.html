@@ -2,7 +2,7 @@
 <html lang="de-CH">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Kraftplan">
@@ -127,6 +127,11 @@
   .rest-btn{background:none;border:1px solid var(--line);color:var(--chalk);border-radius:6px;padding:5px 10px;cursor:pointer;font-family:'Inter',sans-serif;font-size:12px;}
   .block-note{font-size:12px;color:var(--chalk-dim);text-align:center;margin:10px 0 4px;font-style:italic;}
 
+
+  /* iOS: Eingabefelder mit <16px loesen Auto-Zoom aus -> Layout springt, naechster Tipp geht daneben */
+  input, textarea, select{font-size:16px !important;touch-action:manipulation;}
+  button{touch-action:manipulation;}
+  .set-row input{padding:8px 8px;}
   .loading{padding:60px 20px;text-align:center;color:var(--chalk-dim);font-family:'Space Mono',monospace;font-size:13px;}
 </style>
 </head>
@@ -214,7 +219,7 @@ function saveLocalCache(){ try{ localStorage.setItem('kraftplan-data', JSON.stri
 
 async function ghLoad(){
   if(!ghConfig || !ghConfig.owner || !ghConfig.repo || !ghConfig.token) return false;
-  syncState = 'syncing'; render();
+  syncState = 'syncing'; updateSyncStatus();
   try{
     const url = `https://api.github.com/repos/${ghConfig.owner}/${ghConfig.repo}/contents/data.json`;
     const res = await fetch(url, { headers: { 'Authorization': 'token '+ghConfig.token, 'Accept':'application/vnd.github+json' } });
@@ -232,7 +237,7 @@ async function ghLoad(){
 
 async function ghSave(){
   if(!ghConfig || !ghConfig.owner || !ghConfig.repo || !ghConfig.token) return;
-  syncState='syncing'; render();
+  syncState='syncing'; updateSyncStatus();
   try{
     const url = `https://api.github.com/repos/${ghConfig.owner}/${ghConfig.repo}/contents/data.json`;
     const body = { message:'Kraftplan-Daten aktualisiert', content: b64EncodeUnicode(JSON.stringify(store, null, 2)) };
@@ -243,7 +248,7 @@ async function ghSave(){
     ghSha = json.content.sha;
     syncState='ok'; lastSyncTime=new Date();
   }catch(e){ syncState='error'; }
-  render();
+  updateSyncStatus();
 }
 
 function scheduleSave(){
@@ -368,6 +373,11 @@ function renderPanel(){
         const db = isDumbbell(ex, data);
         const displayName = (ex.weightMode==='choice' && data.mode==='dumbbell' && ex.altName) ? ex.altName : ex.name;
         const hist = historyForExercise(ex.id, selectedDate);
+        const notesTop = /-a[12]$/.test(ex.id);
+        const notesHtml = `<div class="notes-wrap">
+              <label class="notes-label">Bemerkungen</label>
+              <textarea class="notes-input" rows="1" data-notes-ex="${ex.id}" placeholder="z. B. Technik, Befinden, Ausrüstung ...">${data.notes}</textarea>
+            </div>`;
         html += `<div class="pair pair-${block.pairColor}" style="margin-bottom:${idx===0?'10px':'0'};">
           <div class="exercise">
             <div class="ex-head">
@@ -377,6 +387,7 @@ function renderPanel(){
               </div>
               <div class="ex-target">${ex.sets} × ${ex.targetReps}<br>Pause ${ex.pause}</div>
             </div>
+            ${notesTop ? notesHtml : ''}
             ${ex.weightMode==='choice' ? `
               <div class="mode-toggle">
                 <button class="mode-btn ${data.mode==='barbell'?'active':''}" data-mode-ex="${ex.id}" data-mode="barbell">Langhantel</button>
@@ -399,10 +410,7 @@ function renderPanel(){
                   <button class="done-btn ${row.done?'done':''}" data-ex="${ex.id}" data-i="${i}">${row.done?'✓':''}</button>
                 </div>`).join('')}
             </div>
-            <div class="notes-wrap">
-              <label class="notes-label">Bemerkungen</label>
-              <textarea class="notes-input" rows="1" data-notes-ex="${ex.id}" placeholder="z. B. Technik, Befinden, Ausrüstung ...">${data.notes}</textarea>
-            </div>
+            ${notesTop ? '' : notesHtml}
             ${hist.length ? `<div class="history-line"><b>Verlauf:</b> ${hist.map(h=>{const [hy,hm,hd]=h.date.split('-');return `${hd}.${hm}. ${h.label}`;}).join(' · ')}</div>` : ''}
           </div>
         </div>`;
@@ -453,8 +461,7 @@ function renderSettings(){
     </div>`;
 }
 
-function render(){
-  const app = document.getElementById('app');
+function getSyncInfo(){
   let statusLabel = 'Nur auf diesem Gerät gespeichert';
   let dotClass = '';
   if(ghConfig && ghConfig.token){
@@ -462,6 +469,28 @@ function render(){
     else if(syncState==='ok'){ statusLabel='Synchronisiert'+(lastSyncTime?' · '+lastSyncTime.toLocaleTimeString('de-CH',{hour:'2-digit',minute:'2-digit'}):''); dotClass='ok'; }
     else if(syncState==='error'){ statusLabel='Synchronisation fehlgeschlagen'; dotClass='err'; }
   }
+  return {statusLabel, dotClass};
+}
+
+// Aktualisiert nur die Statuszeile - baut die Seite NICHT neu auf (Tastatur bleibt offen)
+function updateSyncStatus(){
+  const {statusLabel, dotClass} = getSyncInfo();
+  const dot = document.getElementById('sync-dot');
+  const label = document.getElementById('sync-label');
+  if(dot) dot.className = 'sync-dot ' + dotClass;
+  if(label) label.textContent = statusLabel;
+}
+
+// Neuaufbau nur, wenn gerade kein Eingabefeld aktiv ist
+function safeRender(){
+  const a = document.activeElement;
+  if(a && (a.tagName==='INPUT' || a.tagName==='TEXTAREA')) { updateSyncStatus(); return; }
+  render();
+}
+
+function render(){
+  const app = document.getElementById('app');
+  const {statusLabel, dotClass} = getSyncInfo();
   app.innerHTML = `
     <header>
       <div class="brand">
@@ -477,7 +506,7 @@ function render(){
       <button class="icon-btn" id="settings-toggle">⚙</button>
     </header>
     <div class="sync-status">
-      <span class="sync-dot ${dotClass}"></span><span>${statusLabel}</span>
+      <span class="sync-dot ${dotClass}" id="sync-dot"></span><span id="sync-label">${statusLabel}</span>
       ${ghConfig && ghConfig.token ? `<button id="manual-sync">Jetzt aktualisieren</button>` : ''}
     </div>
     ${renderSettings()}
@@ -652,14 +681,14 @@ document.addEventListener('visibilitychange', ()=>{
         if(rem<=0){ clearInterval(t.intervalId); t.running=false; t.remaining=0; }
       }
     });
-    render();
+    safeRender();
   }
 });
 
 async function init(){
   loadLocalCache();
   render();
-  if(ghConfig && ghConfig.token){ await ghLoad(); render(); }
+  if(ghConfig && ghConfig.token){ await ghLoad(); safeRender(); }
 }
 init();
 </script>
