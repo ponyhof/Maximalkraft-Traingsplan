@@ -2908,7 +2908,7 @@
         {
           "kg": "40",
           "reps": "4",
-          "done": false
+          "done": true
         }
       ],
       "mode": "barbell",
