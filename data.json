@@ -2893,7 +2893,7 @@
         {
           "kg": "40",
           "reps": "4",
-          "done": false
+          "done": true
         },
         {
           "kg": "40",
@@ -2918,7 +2918,7 @@
       "rows": [
         {
           "kg": "50",
-          "reps": "5",
+          "reps": "4",
           "done": false
         },
         {
